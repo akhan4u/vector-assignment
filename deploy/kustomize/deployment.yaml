@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timestamp-deployment
+  labels:
+    app: timestamp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timestamp
+  template:
+    metadata:
+      labels:
+        app: timestamp
+    spec:
+      containers:
+        - name: timestamp
+          image: amaankhan4u/vector:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 200m
